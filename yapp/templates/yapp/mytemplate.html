@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% if title %}
+            <title> 
+                <b> YAPP {{ title }} : You can pass the title here from views function function</b>
+            </title>
+        {% else %}
+            <title>
+                Y-APP Title {{ title }}
+            </title>
+        {% endif %}
+    </head>
+    <body>
+        {% block content %} {% endblock %}
+    </body>
+</html>

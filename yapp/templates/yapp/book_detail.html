@@ -1,0 +1,23 @@
+{% extends "yapp/bootstrap.html" %}
+        {% block content %}
+            <article class="media content-section">
+            {% if object.donor.profile.image %}
+            <img class="rounded-circle article-img" src="{{ object.donor.profile.image.url }} ">
+            {% else %}
+            <img class="rounded-circle article-img" src="media/noprofile.jpg">
+            {% endif %}
+            <div class="media-body">
+                <div class="article-metadata">
+                <a class="mr-2" href="#">{{ object.author }}</a>
+                <small class="text-muted"> Donor: {{ object.donor }}</small>
+                </div>
+                <h2 class="article-title">{{ object.title }}</h2>
+                <p class="article-content">{{ object.date_barrowed|date:"F d, Y" }}</p>
+                {% if object.donor == user %}
+                    <a class="btn btn-secondary" href="{% url 'book-update' object.id %}">Update</a>
+                    <a class="btn btn-danger" href="{% url 'book-delete' object.id %}">Delete</a>
+                {% endif %}
+                <p class="article-content">{{ object.date_hired }}</p>
+            </div>
+            </article>
+        {% endblock %}
