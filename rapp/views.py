@@ -12,7 +12,9 @@ def register(request):
     if request.method == 'POST':
         usr_reg_form = UsrRegForm(request.POST)
         if usr_reg_form.is_valid():
+            print("Before calling save() in rapp.views.register()")
             usr_reg_form.save()
+            print("After calling save() in rapp.views.register()")
             username = usr_reg_form.cleaned_data.get('username')
             messages.success(request, f'Account created for {username}, you can now login!')
             return redirect('yapp-home')
@@ -38,4 +40,5 @@ def profile(request):
         'u_form': u_form,
         'p_form': p_form,
     }
+
     return render(request, 'rapp/profile.html', context)

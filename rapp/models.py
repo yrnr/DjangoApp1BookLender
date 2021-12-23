@@ -10,9 +10,10 @@ class Profile(models.Model):
     def __str__(self) -> str:
         return f'{self.user.username} Profile'
     
-    def save(self): 
+    def save(self, **kwargs): 
         # This method exists in the parent class models.Model
         # we are overriding to add some functionality (image resizing)
+        print(kwargs.items())
         super().save()
 
         img = Image.open(self.image.path)
